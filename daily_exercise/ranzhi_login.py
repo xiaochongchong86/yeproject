@@ -13,14 +13,14 @@ class AdminLoginCorrection(unittest.TestCase):
     def test_admin_login(self):
         u"""测试管理员用户是否能成功登录"""
         driver = self.driver
-        driver.get(self.base_url + "bugfree/index.php/site/login")
-        self.assertEqual(u"登录 - BugFree",driver.title)
-        driver.find_element_by_id("LoginForm_username").clear()
-        driver.find_element_by_id("LoginForm_username").send_keys("admin")
-        driver.find_element_by_id("LoginForm_password").clear()
-        driver.find_element_by_id("LoginForm_password").send_keys("123456")
-        driver.find_element_by_id("SubmitLoginBTN").click()
-        self.assertEqual("BugFree", driver.title)
+        driver.get(self.base_url + "ranzhi/www/sys/user-login.html")
+        self.assertEqual(u"登录 - 然之协同",driver.title)
+        driver.find_element_by_id("account").clear()
+        driver.find_element_by_id("account").send_keys("admin")
+        driver.find_element_by_id("password").clear()
+        driver.find_element_by_id("password").send_keys("123456")
+        driver.find_element_by_id("submit").click()
+        self.assertEqual("然之协同 ", driver.title)
 
     def test_admin_logout(self):
         u"""测试管理员退出以后，能否正确跳转"""
