@@ -12,6 +12,9 @@ class AdminLoginFail(unittest.TestCase):
         self.driver.implicitly_wait(30)
         self.base_url = "http://localhost/"
 
+    def tearDown(self):
+        self.driver.quit()
+
     def test_admin_login_failure_with_wrong_username(self):
         """测试不正确的admin用户名"""
         driver = self.driver
@@ -35,10 +38,6 @@ class AdminLoginFail(unittest.TestCase):
         driver.find_element_by_id("LoginForm_password").send_keys("12345678")
         driver.find_element_by_id("SubmitLoginBTN").click()
         self.assertEqual(u"用户名和密码不匹配  ", driver.find_element_by_id("login-error-div").text)
-
-    def tearDown(self):
-        self.driver.quit()
-
 
 if __name__ == "__main__":
     unittest.main()

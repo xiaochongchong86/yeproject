@@ -10,6 +10,9 @@ class AdminLoginCorrection(unittest.TestCase):
         self.driver.implicitly_wait(30)
         self.base_url = "http://localhost/"
 
+    def tearDown(self):
+        self.driver.quit()
+
     def test_admin_login(self):
         u"""测试管理员用户是否能成功登录"""
         driver = self.driver
@@ -21,6 +24,7 @@ class AdminLoginCorrection(unittest.TestCase):
         driver.find_element_by_id("LoginForm_password").send_keys("123456")
         driver.find_element_by_id("SubmitLoginBTN").click()
         self.assertEqual("BugFree", driver.title)
+
 
     def test_admin_logout(self):
         u"""测试管理员退出以后，能否正确跳转"""
