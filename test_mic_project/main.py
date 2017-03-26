@@ -6,17 +6,18 @@ import logging
 import unittest
 from lib.Logger import Logger
 from lib.HTMLTestRunner import HTMLTestRunner
-from testcase.bugfree_login_logout import BugfreeLoginLogout
-from   lib.SendEmail import send_email
+from testcase.admin_login_logout.admin_login_correction import AdminLoginCorrection
+from lib.SendEmail import send_email
 
 FROM_ADDR = u"qq2915874926@163.com"
 FROM_PSWD = u"qwer1234"  # 163设置的第三方授权码
-TO_ADDR = u"327490379@qq.com"
+TO_ADDR = u"qq2915874926@163.com"
 
-def suite():
+
+def suites():
     suite = unittest.TestSuite()
     loader = unittest.TestLoader()
-    suite.addTests(loader.loadTestsFromTestCase(BugfreeLoginLogout))
+    suite.addTests(loader.loadTestsFromTestCase(AdminLoginCorrection))
     return suite
 
 if __name__ == "__main__":
@@ -28,7 +29,7 @@ if __name__ == "__main__":
     runner = HTMLTestRunner(stream=fp,
                             title=u"测试报告",
                             description=u"测试用例执行情况: ")
-    runner.run(suite())
+    runner.run(suites())
     fp.close()
     send_email(FROM_ADDR, FROM_PSWD, TO_ADDR, u"测试报告", report_path)
 
