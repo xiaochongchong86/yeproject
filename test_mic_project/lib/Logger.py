@@ -8,7 +8,7 @@ import logging
 
 
 class Logger(object):
-    def __init__(self, logname='./log/logger.log', loglevel=logging.DEBUG):
+    def __init__(self, logname='./log/logger.log', loglevel=logging.INFO):
         """
            指定保存日志的文件路径，日志级别，以及调用文件
            将日志存入到指定的文件中
